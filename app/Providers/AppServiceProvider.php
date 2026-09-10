@@ -19,8 +19,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        # Wir loggen im Redis-System für jede Sekunde des Tages, wie viele Worker aktiv am Laufen waren.
-        # Dies ist notwendig, damit wir mitbekommen können, ab welchem Zeitpunkt wir zu wenig Worker zur Verfügung haben.
+        # We log in the Redis system for every second of the day how many workers were actively running.
+        # This is necessary so that we can notice from which point in time we have too few workers available.
         Queue::before(function (JobProcessing $event) {
             $this->begin = strtotime(date(DATE_RFC822, mktime(date("H"),date("i"), date("s"), date("m"), date("d"), date("Y"))));
         });

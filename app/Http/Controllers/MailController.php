@@ -61,17 +61,17 @@ class MailController extends Controller
 
     public function donation(Request $request)
     {
-        # Der enthaltene String wird dem Benutzer nach der Spende ausgegeben
+        # The contained string is shown to the user after the donation
         $messageToUser = "";
         $messageType = ""; # [success|error]
 
-        # Folgende Felder werden vom Spendenformular als Input übergeben:
+        # The following fields are passed as input from the donation form:
         # Name
-        # Telefon
+        # Phone
         # email
-        # Kontonummer ( IBAN )
-        # Bankleitzahl ( BIC )
-        # Nachricht
+        # Account number (IBAN)
+        # Bank code (BIC)
+        # Message
         if(!$request->has('Kontonummer') || !$request->has('Bankleitzahl') || !$request->has('Nachricht')){
             $messageToUser = "Sie haben eins der folgenden Felder nicht ausgefüllt: IBAN, BIC, Nachricht. Bitte korrigieren Sie Ihre Eingabe und versuchen es erneut.\n";
             $messageType = "error";

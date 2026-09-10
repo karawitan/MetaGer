@@ -56,7 +56,7 @@ class StartpageController extends Controller
 
     public function loadPage($subpage)
     {
-        /* TODO CSS und Titel laden
+        /* TODO load CSS and title
         $css = array(
             'datenschutz' => 'privacy.css',
         );

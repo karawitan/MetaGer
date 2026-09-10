@@ -13,7 +13,7 @@ abstract class Searchengine
 {
     use DispatchesJobs;
 
-    protected $ch; # Curl Handle zum erhalten der Ergebnisse
+    protected $ch; # Curl handle for retrieving the results
     public $fp;
     protected $getString = "";
     protected $engine;
@@ -42,20 +42,20 @@ abstract class Searchengine
             $this->cacheDuration = 60;
         }
 
-        # Wir registrieren die Benutzung dieser Suchmaschine
+        # We register the usage of this search engine
         $this->uses = intval(Redis::hget($this->name, "uses")) + 1;
         Redis::hset($this->name, "uses", $this->uses);
 
-        # Eine Suchmaschine kann automatisch temporär deaktiviert werden, wenn es Verbindungsprobleme gab:
+        # A search engine can be temporarily deactivated automatically if there were connection problems:
         if (isset($this->disabled) && strtotime($this->disabled) <= time()) {
-            # In diesem Fall ist der Timeout der Suchmaschine abgelaufen.
+            # In this case the timeout of the search engine has expired.
             $this->enable($metager->getSumaFile(), "Die Suchmaschine " . $this->name . " wurde wieder eingeschaltet.");
         } elseif (isset($this->disabled) && strtotime($this->disabled) > time()) {
             $this->enabled = false;
             return;
         }
 
-        # User-Agent definieren:
+        # Define user agent:
         $this->useragent = "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1";
         $this->ip        = $metager->getIp();
         $this->gefVon    = "<a href=\"" . $this->homepage . "\" target=\"_blank\">" . $this->displayName . "</a>";
@@ -79,11 +79,11 @@ abstract class Searchengine
             $this->cached = true;
             $this->retrieveResults();
         } else {
-            # Die Anfragen an die Suchmaschinen werden nun von der Laravel-Queue bearbeitet:
-            # Hinweis: solange in der .env der QUEUE_DRIVER auf "sync" gestellt ist, werden die Abfragen
-            # nacheinander abgeschickt.
-            # Sollen diese Parallel verarbeitet werden, muss ein anderer QUEUE_DRIVER verwendet werden.
-            # siehe auch: https://laravel.com/docs/5.2/queues
+            # The requests to the search engines are now processed by the Laravel queue:
+            # Note: as long as QUEUE_DRIVER is set to "sync" in the .env file, the requests
+            # are sent one after another.
+            # To process them in parallel, a different QUEUE_DRIVER must be used.
+            # see also: https://laravel.com/docs/5.2/queues
             $this->dispatch(new Search($this->resultHash, $this->host, $this->port, $this->name, $this->getString, $this->useragent, $metager->getSumaFile()));
         }
     }
@@ -198,19 +198,19 @@ abstract class Searchengine
     {
         $getString = "";
 
-        # Skript:
+        # Script:
         if (strlen($this->skript) > 0) {
             $getString .= $this->skript;
         } else {
             $getString .= "/";
         }
 
-        # FormData:
+        # Form data:
         if (strlen($this->formData) > 0) {
             $getString .= "?" . $this->formData;
         }
 
-        # Wir müssen noch einige Platzhalter in dem GET-String ersetzen:
+        # We still need to replace some placeholders in the GET string:
         if (strpos($getString, "<<USERAGENT>>")) {
             $getString = str_replace("<<USERAGENT>>", $this->urlEncode($this->useragent), $getString);
         }
@@ -254,7 +254,7 @@ abstract class Searchengine
             $affil_data .= '&xfip=' . $_SERVER['HTTP_X_FORWARDED_FOR'];
         }
         $affilDataValue = $this->urlEncode($affil_data);
-        # Wir benötigen die ServeUrl:
+        # We need the ServeUrl:
         $serveUrl = $this->urlEncode($url);
 
         return "&affilData=" . $affilDataValue . "&serveUrl=" . $serveUrl;
