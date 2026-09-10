@@ -287,7 +287,7 @@ class MetaGer
         }
 
         if (count($this->results) <= 0) {
-            $this->errors[] = "Leider konnten wir zu Ihrer Sucheingabe keine passenden Ergebnisse finden. Sie können aber versuchen diese anzupassen.";
+            $this->errors[] = trans('messages.no_results');
         }
     }
 
@@ -455,7 +455,7 @@ class MetaGer
         #die(var_dump($enabledSearchengines));
 
         if ($countSumas <= 0) {
-            $this->errors[] = "Achtung: Sie haben in ihren Einstellungen keine Suchmaschine ausgewählt.";
+            $this->errors[] = trans('messages.no_engine_selected');
         }
         $engines = [];
 
@@ -469,10 +469,10 @@ class MetaGer
                 }
             }
             if ($enginesWithSite === 0) {
-                $this->errors[]   = "Sie wollten eine Sitesearch auf " . $this->site . " durchführen. Leider unterstützen die eingestellten Suchmaschinen diese nicht. Sie können <a href=\"" . $this->generateSearchLink("web", false) . "\">hier</a> die Sitesearch im Web-Fokus durchführen. Es werden ihnen Ergebnisse ohne Sitesearch angezeigt.";
+                $this->errors[]   = trans('messages.site_search_unsupported', ['site' => $this->site, 'link' => $this->generateSearchLink("web", false)]);
                 $siteSearchFailed = true;
             } else {
-                $this->warnings[] = "Sie führen eine Sitesearch durch. Es werden nur Ergebnisse von der Seite: <a href=\"http://" . $this->site . "\" target=\"_blank\">\"" . $this->site . "\"</a> angezeigt.";
+                $this->warnings[] = trans('messages.site_search_active', ['site' => $this->site]);
             }
 
         }
@@ -662,7 +662,7 @@ class MetaGer
         # Search input:
         $this->eingabe = trim($request->input('eingabe', ''));
         if (strlen($this->eingabe) === 0) {
-            $this->warnings[] = 'Achtung: Sie haben keinen Suchbegriff eingegeben. Sie können ihre Suchbegriffe oben eingeben und es erneut versuchen.';
+            $this->warnings[] = trans('messages.no_search_term');
         }
         $this->q = $this->eingabe;
 
@@ -704,7 +704,7 @@ class MetaGer
         # Sometimes we have to adjust parameters to comply with the search settings:
         if ($request->has('dart')) {
             $this->time       = 10000;
-            $this->warnings[] = "Hinweis: Sie haben Dart-Europe aktiviert. Die Suche kann deshalb länger dauern und die maximale Suchzeit wurde auf 10 Sekunden hochgesetzt.";
+            $this->warnings[] = trans('messages.dart_europe');
         }
         if ($this->time <= 500 || $this->time > 20000) {
             $this->time = 1000;
@@ -807,7 +807,7 @@ class MetaGer
                 $stopwordsString .= $stopword . ", ";
             }
             $stopwordsString  = rtrim($stopwordsString, ", ");
-            $this->warnings[] = "Sie machen eine Ausschlusssuche. Ergebnisse mit folgenden Wörtern werden nicht angezeigt: \"" . $stopwordsString . "\"";
+            $this->warnings[] = trans('messages.exclusion_search', ['words' => $stopwordsString]);
         }
 
         # Notification about a phrase search
@@ -822,7 +822,7 @@ class MetaGer
         }
         $p = rtrim($p, ", ");
         if (sizeof($this->phrases) > 0) {
-            $this->warnings[] = "Sie führen eine Phrasensuche durch: $p";
+            $this->warnings[] = trans('messages.phrase_search', ['phrases' => $p]);
         }
 
     }

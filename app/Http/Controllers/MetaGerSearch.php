@@ -91,7 +91,7 @@ class MetaGerSearch extends Controller
                     $quicktip["title"] = $result['displaytitle'];
                     $quicktip["URL"] = $result['fullurl'];
                     $quicktip["descr"] = strip_tags($result['extract']);
-                    $quicktip['gefVon'] = "aus <a href=\"https://de.wikipedia.org\" target=\"_blank\">Wikipedia, der freien Enzyklopädie</a>";
+                    $quicktip['gefVon'] = trans('messages.wikipedia_source');
 
                     $quicktips[] = $quicktip;
                 }

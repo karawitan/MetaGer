@@ -21,7 +21,7 @@ class StartpageController extends Controller
     {
         \App::setLocale($locale);
         return view('index', [ 
-            'title' => 'MetaGer: Sicher suchen & finden, Privatsphäre schützen', 
+            'title' => trans('titles.index'),
             'homeIcon']);
     } */
 
@@ -64,9 +64,9 @@ class StartpageController extends Controller
         if (in_array($subpage, $css)) {
             return view($subpage, [ 'title' => 'Datenschutz Richtlinien', 'css' => $css[$subpage]]);
         } else {
-            return view($subpage, [ 'title' => 'Datenschutz Richtlinien']);
+            return view($subpage, [ 'title' => trans('titles.datenschutz')]);
         }*/
-        return view($subpage, [ 'title' => 'Datenschutz Richtlinien']);
+        return view($subpage, [ 'title' => trans('titles.datenschutz')]);
     }
 
     public function loadLocalPage($locale = "de", $subpage = "datenschutz")
@@ -143,7 +143,7 @@ class StartpageController extends Controller
 
         return view('settings')
             ->with('foki', $foki)
-            ->with('title', 'Einstellungen')
+            ->with('title', trans('titles.settings'))
             ->with('css', 'settings.css')
             ->with('js', ['settings.js'])
             ->with('navbarFocus', 'suche');

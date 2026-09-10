@@ -8,7 +8,7 @@
 <div>
 <h1>{{ $serverName }}</h1>
 <svg width="100%" height="500px">
-	<!-- Zunächst die Achsen: -->
+	<!-- First the axes: -->
 	<!-- Y-Achse -->
 	<line x1="1%" y1="0" x2="1%" y2="95%" style="stroke:rgb(0,0,0);stroke-width:3" />
 	<line x1="1%" y1="0" x2="0" y2="3%" style="stroke:rgb(0,0,0);stroke-width:3" />
@@ -71,7 +71,7 @@
 			$count++;
 		}
 	?>
-	<!-- Und noch eine Linie für das Maximum: -->
+	<!-- And another line for the maximum: -->
 	<line x1="1%" y1="{{ $maximumY }}%" x2="99%" y2="{{ $maximumY }}%" style="stroke:rgb(255,0,0);stroke-width:1" stroke-dasharray="5,5" d="M5 20 l215 0"/>
 </svg>
 </div>

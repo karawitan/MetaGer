@@ -16,7 +16,7 @@ class MailController extends Controller
      */
     public function contactMail(Request $request){
 
-        # Nachricht, die wir an den Nutzer weiterleiten:
+        # Message that we forward to the user:
         $messageType = ""; # [success|error]
         $returnMessage = '';
         $replyTo = $request->input('email', 'noreply@metager.de');
@@ -28,9 +28,9 @@ class MailController extends Controller
 
         if(!$request->has('message')){
             $messageType = "error";
-            $returnMessage = "Tut uns leid, aber leider haben wir mit Ihrer Kontaktanfrage keine Daten erhalten. Die Email wurde nicht versand";
+            $returnMessage = trans('mail.contact_no_data');
         }else{
-            # Wir versenden die Mail des Benutzers an uns:
+            # We send the user's mail to us:
             $message = $request->input('message');
             $subject = "[Ticket " . date("Y") . date("d") . date("m") . date("H") . date("i") . date("s") . "] MetaGer - Kontaktanfrage";
             if( Mail::send(['text' => 'kontakt.mail'], ['messageText'=>$message], function($message) use($replyTo, $subject){
@@ -39,13 +39,13 @@ class MailController extends Controller
                 $message->replyTo($replyTo, $name = null);
                 $message->subject($subject);
             }) ){
-                # Mail erfolgreich gesendet
+                # Mail successfully sent
                 $messageType = "success";
-                $returnMessage = 'Ihre Email wurde uns erfolgreich zugestellt. Vielen Dank dafür! Wir werden diese schnellstmöglich bearbeiten und uns dann ggf. wieder bei Ihnen melden.';
+                $returnMessage = trans('mail.contact_success');
             }else{
-                # Fehler beim senden der Email
+                # Error sending the email
                 $messageType = "error";
-                $returnMessage = 'Beim Senden Ihrer Email ist ein Fehler aufgetreten. Bitte schicken Sie eine Email an: office@suma-ev.de, damit wir uns darum kümmern können.';
+                $returnMessage = trans('mail.contact_error');
             }
 
             $messageType = "success";
@@ -73,18 +73,18 @@ class MailController extends Controller
         # Bank code (BIC)
         # Message
         if(!$request->has('Kontonummer') || !$request->has('Bankleitzahl') || !$request->has('Nachricht')){
-            $messageToUser = "Sie haben eins der folgenden Felder nicht ausgefüllt: IBAN, BIC, Nachricht. Bitte korrigieren Sie Ihre Eingabe und versuchen es erneut.\n";
+            $messageToUser = trans('mail.donation_missing_fields');
             $messageType = "error";
         }else{
-            $message = "\r\nName: " . $request->input('Name', 'Keine Angabe');
-            $message .= "\r\nTelefon: " . $request->input('Telefon', 'Keine Angabe');
+            $message = "\r\nName: " . $request->input('Name', trans('mail.no_value'));
+            $message .= "\r\nTelefon: " . $request->input('Telefon', trans('mail.no_value'));
             $message .= "\r\nKontonummer: " . $request->input('Kontonummer');
             $message .= "\r\nBankleitzahl: " . $request->input('Bankleitzahl');
             $message .= "\r\nNachricht: " . $request->input('Nachricht');
 
             $replyTo = $request->input('email', 'anonymous-user@metager.de');
             if (!filter_var($replyTo, FILTER_VALIDATE_EMAIL)) {
-                $messageToUser .= "Die eingegebene Email-Addresse ($replyTo) scheint nicht korrekt zu sein.";
+                $messageToUser .= trans('mail.donation_invalid_email', ['email' => $replyTo]);
             }
 
             try{
@@ -95,14 +95,14 @@ class MailController extends Controller
                     $message->subject("MetaGer - Spende");
                 })) {
                     $messageType = "success";
-                    $messageToUser = "Wir haben Ihre Spendenbenachrichtigung dankend erhalten. Eine persönliche Nachricht erhalten Sie in nächster Zeit, falls sie Ihre Kontaktdaten angegeben haben.";
+                    $messageToUser = trans('mail.donation_success');
                 }else{
                     $messageType = "error";
-                    $messageToUser = 'Beim Senden Ihrer Spendenbenachrichtigung ist ein Fehler auf unserer Seite aufgetreten. Bitte schicken Sie eine Email an: office@suma-ev.de, damit wir uns darum kümmern können.';
+                    $messageToUser = trans('mail.donation_error');
                 }
             } catch( \Swift_TransportException $e ){
                 $messageType = "error";
-                $messageToUser = 'Beim Senden Ihrer Spendenbenachrichtigung ist ein Fehler auf unserer Seite aufgetreten. Bitte schicken Sie eine Email an: office@suma-ev.de, damit wir uns darum kümmern können.';
+                $messageToUser = trans('mail.donation_error');
             }
         }
 

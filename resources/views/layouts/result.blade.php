@@ -54,9 +54,9 @@
 				<a href="{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), "/partnershops") }}" target="_blank">Partnershop</a>
 				</span>
 				@endif
-				<a class="proxy" onmouseover="$(this).popover('show');" onmouseout="$(this).popover('hide');" data-toggle="popover" data-placement="auto right" data-container="body" data-content="Der Link wird anonymisiert geöffnet. Ihre Daten werden nicht zum Zielserver übetragen. Möglicherweise funktionieren manche Webseiten nicht wie gewohnt." href="{{ $result->proxyLink }}" target="{{ $metager->getTab() }}">
+				<a class="proxy" onmouseover="$(this).popover('show');" onmouseout="$(this).popover('hide');" data-toggle="popover" data-placement="auto right" data-container="body" data-content="{{ trans('results.proxy_tooltip') }}" href="{{ $result->proxyLink }}" target="{{ $metager->getTab() }}">
 					<img src="/img/proxyicon.png" alt="" />
-					anonym öffnen
+					{{ trans('results.proxy_open') }}
 				</a>
 			</div>
 			</div>
