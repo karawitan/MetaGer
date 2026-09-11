@@ -227,5 +227,3 @@
           </figure>
         
 @endsection
-
-@endsection
