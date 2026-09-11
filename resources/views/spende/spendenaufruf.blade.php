@@ -18,7 +18,6 @@
 <h3>
 {{ trans('spendenaufruf.h3_1') }}
 </h3>
-<p><a href="{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), "/spende") }}">{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), "/spende") }}</a></p>
 <p>
 {{ trans('spendenaufruf.p4') }}
 </p>
