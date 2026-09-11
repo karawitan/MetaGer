@@ -40,28 +40,7 @@
 		<p class="text-muted">{{ trans('spenden.bankinfo.3') }}</p>
 	</div>
 	<div class="col-sm-6">
-		<div class="">
-		<div class="col-md-6">
-			<h2>{!! trans('spenden.logos.1') !!}</h2>
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-				<input name="cmd" value="_xclick" type="hidden">
-				<input name="business" value="wsb@suma-ev.de" type="hidden">
-				<input name="item_name" value="SuMa-eV Spende" type="hidden">
-				<input name="buyer_credit_promo_code" value="" type="hidden">
-				<input name="buyer_credit_product_category" value="" type="hidden">
-				<input name="buyer_credit_shipping_method" value="" type="hidden">
-				<input name="buyer_credit_user_address_change" value="" type="hidden">
-				<input name="no_shipping" value="0" type="hidden">
-				<input name="no_note" value="1" type="hidden">
-				<input name="currency_code" value="EUR" type="hidden">
-				<input name="tax" value="0" type="hidden">
-				<input name="lc" value="DE" type="hidden">
-				<input name="bn" value="PP-DonationsBF" type="hidden">
-				<input src="/img/paypalspenden.gif" name="submit" width="120px" alt="{{ trans('spenden.paypal.alt') }}" type="image">
-			</form>
-		</div>
-		</div>
-		</div>
+	</div>
 	</div>
 	<div class="clearfix"></div>
 	<hr />
