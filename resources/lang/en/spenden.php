@@ -49,4 +49,5 @@ You can do this by donating on our website. Or if you want to help open search e
 	'about.4.5' => 'This click brings you to the boost project shop selection. There you choose your shop and keep on shopping as usual. That is all. If enough people do this, we do not need ads anymore. Just two clicks for you - a chance for open knowledge access for the digital world.',
 
 	'paypal.alt' => 'Donate with PayPal - fast, free and secure!',
+	'bitcoin_address' => 'Our Bitcoin address:',
 ];

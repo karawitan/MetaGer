@@ -1,6 +1,7 @@
 <?php
 
 return [
+	'heading' => 'Team',
 	'role.1' => 'chief executive, chairman',
 	'role.2' => 'office supervisor und youth protection commissioner',
 	'role.3' => 'press secretary',

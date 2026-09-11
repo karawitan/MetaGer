@@ -1,6 +1,7 @@
 <?php
 
 return [
+	'heading' => 'Team',
 	'role.1' => 'Geschäftsführer, Vorstand',
 	'role.2' => 'Büroleiter und Jugendschutzbeauftragter',
 	'role.3' => 'Pressereferentin',

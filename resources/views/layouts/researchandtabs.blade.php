@@ -34,10 +34,10 @@
         @if( strpos(rtrim(Request::header('REFERER'), '/'), LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), "/") )  === 0 && ( $browser === 'Firefox' || $browser === 'Mozilla' || $browser === 'Chrome' || $browser === 'IE' || $browser === 'Edge') )
         <div id="searchplugin" class="alert alert-warning alert-dismissible" role="alert" style="">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                Wussten Sie, dass Ihr {{ $browser }} MetaGer als Standardsuchmaschine verwenden kann?
+                {{ trans('results.browser_plugin_notice', ['browser' => $browser]) }}
                 <br />
                 <div style="">
-                    <a href="{{ action('StartpageController@loadStartPage', Request::all()) }}#plugin-modal" target="_blank" type="button" class="btn btn-info" style="">Zeig mir wie</a>
+                    <a href="{{ action('StartpageController@loadStartPage', Request::all()) }}#plugin-modal" target="_blank" type="button" class="btn btn-info" style="">{{ trans('results.browser_plugin_button') }}</a>
                 </div>
         </div>
         @endif

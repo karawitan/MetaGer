@@ -14,9 +14,9 @@
 <form class="contact" name="contact" method="post" action="{{ LaravelLocalization::getLocalizedURL() }}">
   {{ csrf_field() }}
   <div class="form-group">
-    <input class="form-control" name="email" placeholder="Ihre e-mail-Adresse (optional)" type="text"></div>
+    <input class="form-control" name="email" placeholder="{{ trans('kontakt.form.email_placeholder') }}" type="text"></div>
   <div class="form-group">
-    <textarea class="form-control" id="message" name="message" placeholder="Ihre Nachricht"></textarea></div>
+    <textarea class="form-control" id="message" name="message" placeholder="{{ trans('kontakt.form.message_placeholder') }}"></textarea></div>
   <div class="form-group">
     <p><span class="bold">{{ trans('kontakt.form.6') }} <a href="http://openpgpjs.org/.">OpenPGP.js</a> {{ trans('kontakt.form.7') }}</span>
 <span>{{ trans('kontakt.form.8') }}</span></p>

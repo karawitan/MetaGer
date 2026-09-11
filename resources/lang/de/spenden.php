@@ -47,4 +47,5 @@ Das k&ouml;nnen Sie mit einer Spende auf dieser Seite tun. Oder, wenn Sie freie 
 	'about.4.5' => 'Dieser Klick f&uuml;hrt Sie in die Shop-Auswahl des Boost-Projektes. Dort suchen Sie sich Ihren Shop aus und machen wie gewohnt Ihren Einkauf. Das ist alles. Wenn genug Menschen dies tun, dann brauchen wir keine Werbung mehr. Nur zwei Mausklicks f&uuml;r Sie - f&uuml;r alle eine Chance f&uuml;r den freien Wissenszugang in der digitalen Welt.',
 
 	'paypal.alt' => 'Spenden Sie mit PayPal - schnell, kostenlos und sicher!',
+	'bitcoin_address' => 'Unsere Bitcoin-Adresse:',
 ];

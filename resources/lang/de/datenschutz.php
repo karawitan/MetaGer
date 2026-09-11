@@ -36,4 +36,21 @@ unter GNU-AGPLv3 Lizenz (siehe dazu Nachricht im Heise-Ticker:
     'policy.22' => 'Sie k&ouml;nnen also gar keine gesch&uuml;tzte Privatsph&auml;re bieten (selbst dann nicht, wenn sie selber sich noch so sehr darum bem&uuml;hen).',
 
     'twitter'   => 'Was andere &uuml;ber unser Privacy-Konzept auf Twitter sagen:',
+    'twitter_quotes' => [
+        '> 7.4.2014 C. Schulzki-Haddouti @kooptech
+> MetaGer d&uuml;rfte im Moment die sicherste Suchmaschine weltweit sein',
+        '> 8.4.2014 Stiftung Datenschutz @DS_Stiftung
+> Wenn das Suchergebnis anonym bleiben soll: @MetaGer, die gemeinn&uuml;tzige
+> Suchmaschine aus #Hannover',
+        '> 8.4.2014 Markus K&auml;kenmeister @markus2009
+> Suchmaschine ohne Tracking',
+        '> 8.4.2014 Marko [~sHaKaL~] @mobilef0rensics Nice; anonymous Search and find
+> with MetaGer',
+        '> 7.4.2014 Anfahrer @anfahrer
+> Websuche mit #Datenschutz dank #MetaGer : Anonyme Suche und
+> Ergebnisse via Proxy',
+        '> 8.4.2014 stupidit&eacute; pue @dummheitstinkt
+> wow, is this the MetaGer I used in the end 90s in internet cafes???
+> "Anonymes Suchen und Finden mit MetaGer | heise"',
+    ],
 ];
