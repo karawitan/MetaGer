@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sumas>
+	<suma
+		name="mojeek"
+		package="mojeek"
+		displayName="Mojeek"
+		homepage="https://www.mojeek.com"
+		host="www.mojeek.com"
+		port="443"
+		skript="/search"
+		formData="q=&lt;&lt;QUERY&gt;&gt;"
+		type="web"
+		userSelectable="1"
+		hasSiteSearch="1"
+		engineBoost="1.0"
+		cacheDuration="60"
+	/>
+	<suma
+		name="wikipedia"
+		package="wikipedia"
+		displayName="Wikipedia"
+		homepage="https://en.wikipedia.org"
+		host="en.wikipedia.org"
+		port="443"
+		skript="/w/index.php"
+		formData="search=&lt;&lt;QUERY&gt;&gt;&amp;fulltext=Search"
+		type="web,wissenschaft"
+		userSelectable="1"
+		hasSiteSearch="1"
+		engineBoost="0.8"
+		cacheDuration="60"
+	/>
+</sumas>
