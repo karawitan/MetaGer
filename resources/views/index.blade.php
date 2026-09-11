@@ -228,22 +228,4 @@
         
 @endsection
 
-@section('optionalContent')
-<section id="moreInformation" class="hidden-xs">
-          <h1 class="hidden">{{ trans('index.sponsors.head.1') }}</h1>
-          <div class="row">
-            <div class="col-md-12 col-sm-12">
-              <h2>
-                <a href="{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), "about") }}">{{ trans('index.about.title') }}</a>
-              </h2>
-              <ul>
-                <li>
-                  <a href="{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), "datenschutz") }}">{{ trans('index.about.1.1') }}</a>{{ trans('index.about.1.2') }}
-                </li>
-                <li>{{ trans('index.about.2.1') }}<a href="{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), "spende") }}">{{ trans('index.about.2.2') }}</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
 @endsection

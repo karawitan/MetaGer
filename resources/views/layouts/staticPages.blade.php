@@ -108,13 +108,6 @@
 				@yield('content')
 			</main>
 			@yield('optionalContent')
-			<footer>
-				<ul class="list-inline hidden-xs">
-					<li id="info">
-						<a href="{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), "kontakt") }}">{{ trans('staticPages.nav5') }}</a> - <a href="{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), "impressum") }}">{{ trans('staticPages.nav8') }}</a>
-						</li>
-				</ul>
-			</footer>
 			<img src="{{ action('ImageController@generateImage')}}?site={{ urlencode(url()->current()) }}" class="hidden" />
 			<script type="text/javascript" src="/js/jquery.js"></script>
 			<script type="text/javascript" src="/js/bootstrap.js"></script>
