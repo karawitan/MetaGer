@@ -60,9 +60,6 @@
 				<input src="/img/paypalspenden.gif" name="submit" width="120px" alt="{{ trans('spenden.paypal.alt') }}" type="image">
 			</form>
 		</div>
-		<div class="col-md-6">
-			<h2>{!! trans('spenden.logos.2') !!}</h2>
-			<a href="bitcoin:174SDRNZqM2WNobHhCDqD1VXbnZYFXNf8V"><img src="/img/WeAcceptBitcoin.png" style="width:120px" alt="Bitcoin"></a>
 		</div>
 		</div>
 	</div>

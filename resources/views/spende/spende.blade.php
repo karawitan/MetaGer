@@ -32,11 +32,6 @@
 				<input src="/img/paypalspenden.gif" name="submit" width="120px" alt="{{ trans('spenden.paypal.alt') }}" type="image">
 			</form>
 		</div>
-		<div class="col-lg-6 col-md-12 col-sm-12 others ppbc">
-			<h2>{!! trans('spenden.logos.2') !!}</h2>
-			{{ trans('spenden.bitcoin_address') }}<br/>
-			<a href="bitcoin:174SDRNZqM2WNobHhCDqD1VXbnZYFXNf8V">174SDRNZqM2WNobHhCDqD1VXbnZYFXNf8V</a>
-		</div>
 		<div class="clearfix"></div>
 		<hr>
 		<h2 id="lastschrift">{{ trans('spenden.lastschrift.1') }}</h2>
