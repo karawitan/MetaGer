@@ -1,11 +1,12 @@
 <?php
 
 return [
+	'foki.web'			=>	'Web',
 	'foki.bilder'			=>	'Pictures',
 	'foki.nachrichten'		=>	'News',
 	'foki.wissenschaft'		=>	'Science',
 	'foki.produkte'			=>	'Shopping',
-	'foki.anpassen'			=>	'customize',
+	'foki.anpassen'			=>	'Customize',
 	'foki.angepasst'		=>	'customized',
 	'placeholder'			=>	'MetaGer: Search and Find Safely, Protect Privacy',
 

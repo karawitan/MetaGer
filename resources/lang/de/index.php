@@ -1,6 +1,7 @@
 <?php
 
 return [
+	'foki.web'			=>	'Web',
 	'foki.bilder'			=>	'Bilder',
 	'foki.nachrichten'		=>	'Nachrichten',
 	'foki.wissenschaft'		=>	'Wissenschaft',

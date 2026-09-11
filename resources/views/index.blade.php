@@ -120,7 +120,7 @@
               <label id="web-label" for="web">
                 <span class="glyphicon glyphicon-globe">
                 </span>
-                <span class="content">Web
+                <span class="content">{{ trans('index.foki.web') }}
                 </span>
               </label>
               <input id="bilder" type="radio" name="focus" value="bilder" form="searchForm" @if ($focus === 'bilder') checked @endif required="">
