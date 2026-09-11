@@ -44,5 +44,7 @@ Das k&ouml;nnen Sie mit einer Spende auf dieser Seite tun. Oder, wenn Sie freie 
 	'about.4.2' => 'Unter dem Dach dieses Projektes sind ca. 400 Online-Shops (von Amazon bis Zooplus) vereint, die sich bereit erkl&auml;rt haben, von allen Verk&auml;ufen etwa 6% an das Projekt zu spenden. Statt wie bisher direkt zum Online-Shop zu surfen, gehen Sie zun&auml;chst auf',
 	'about.4.3' => 'und klicken dort unterhalb der Suchwort-Eingabebox auf',
 	'about.4.4' => 'Machen Sie Ihre Eink&auml;ufe bei MetaGer-F&ouml;rdershops - klicken Sie hier!',
-	'about.4.5' => 'Dieser Klick f&uuml;hrt Sie in die Shop-Auswahl des Boost-Projektes. Dort suchen Sie sich Ihren Shop aus und machen wie gewohnt Ihren Einkauf. Das ist alles. Wenn genug Menschen dies tun, dann brauchen wir keine Werbung mehr. Nur zwei Mausklicks f&uuml;r Sie - f&uuml;r alle eine Chance f&uuml;r den freien Wissenszugang in der digitalen Welt.'
+	'about.4.5' => 'Dieser Klick f&uuml;hrt Sie in die Shop-Auswahl des Boost-Projektes. Dort suchen Sie sich Ihren Shop aus und machen wie gewohnt Ihren Einkauf. Das ist alles. Wenn genug Menschen dies tun, dann brauchen wir keine Werbung mehr. Nur zwei Mausklicks f&uuml;r Sie - f&uuml;r alle eine Chance f&uuml;r den freien Wissenszugang in der digitalen Welt.',
+
+	'paypal.alt' => 'Spenden Sie mit PayPal - schnell, kostenlos und sicher!',
 ];

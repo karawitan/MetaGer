@@ -29,7 +29,7 @@
 				<input name="tax" value="0" type="hidden">
 				<input name="lc" value="DE" type="hidden">
 				<input name="bn" value="PP-DonationsBF" type="hidden">
-				<input src="/img/paypalspenden.gif" name="submit" width="120px" alt="Spenden Sie mit PayPal - schnell, kostenlos und sicher!" type="image">
+				<input src="/img/paypalspenden.gif" name="submit" width="120px" alt="{{ trans('spenden.paypal.alt') }}" type="image">
 			</form>
 		</div>
 		<div class="col-lg-6 col-md-12 col-sm-12 others ppbc">

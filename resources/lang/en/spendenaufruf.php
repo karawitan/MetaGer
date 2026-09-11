@@ -1,0 +1,15 @@
+<?php
+
+return [
+	'heading' => 'Together with you: For the independent, non-commercial internet search',
+	'p1' => 'MetaGer has been Free Software under GNU AGPL v3 since 16.08.2016, so that our strict protection of your data and your privacy is publicly verifiable. More background information in the <a href="http://heise.de/-3295586" target="_blank">Heise news ticker</a>. You can find the MetaGer source code at <a href="https://gitlab.metager3.de/open-source/MetaGer" target="_blank">https://gitlab.metager3.de/open-source/MetaGer</a>.',
+	'p2' => 'Together with you, we have written a new success story in recent months: the number of MetaGer users continues to rise steadily. It is not a flash in the pan of short-term success, but the consistency of this increase that underpins our success. In three years we have tripled our query numbers. According to expert opinion, we are the safest search engine in the world. Our search results are precise and accurate. We owe both to the fact that we were able to hire programmers on a permanent basis. But even programmers cannot live on love for the cause alone: only thanks to your willingness to donate were we able to manage this financially.',
+	'p3' => 'We also had to go through a legal process against the excesses of the "right to be forgotten" (following the ECJ ruling of 13.5.2014) in order to continue to enable uncensored operation of search engines (<a href="http://suma-ev.de/presse/Suchmaschine-MetaGer-totgeklagt.html" target="_blank">http://suma-ev.de/presse/Suchmaschine-MetaGer-totgeklagt.html</a>). We won in all instances. Subsequently, however, the plaintiff declared herself insolvent. We will probably be left sitting on the costs, which further burdens our finances.',
+	'h3_1' => 'In order to continue writing our shared success story, we now need your help again.',
+	'p4' => 'An internet search engine must be continuously developed further if it is not to become outdated in a short time. Our advertising revenue has fallen sharply. Actually, we do not want any advertising in MetaGer at all. But as long as donations are not sufficient, we cannot do without it yet.',
+	'p5' => 'We ask for your help so that we can continue to develop and operate MetaGer as an independent alternative in a non-profit association. Large parts of the internet are sinking into commerce and advertising junk.',
+	'p6' => 'Let us set an example together against the increasing commercialization of the internet! The operator association of MetaGer, SUMA-EV, has been registered as a non-profit association since 2004 in the register at the Hannover district court under VR200033.',
+	'p7' => 'Please support us so that the independent, non-commercial search on the internet can continue to be developed and operated:',
+	'h3_2' => 'Help ensure that free search engines remain free on the internet. The digital knowledge of the world must be and remain freely accessible without domination by states or corporations.',
+	'emails_heading' => 'From emails of previous donors:',
+];

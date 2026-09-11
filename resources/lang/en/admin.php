@@ -3,7 +3,7 @@
 return [
 	// admin/check.blade.php
 	'check.last_search' => 'The last search query performed on MetaGer was:',
-	'check.repeat_search' => 'The same search on',
+	'check.repeat_search' => 'The same search on :metager, or :google.',
 
 	// admin/count.blade.php
 	'count.caption' => 'Data from the last few days',
@@ -12,4 +12,8 @@ return [
 	'count.total' => 'Search queries total',
 	'count.mean' => 'Average (back to the respective day)',
 	'count.record' => 'Record on :date at the same time <span class="text-info">:same_time</span> - total <span class="text-danger">:total</span>',
+
+	// admin/admin.blade.php
+	'admin.worker_count' => 'Number of Workers: x',
+	'admin.time' => 'Time (h): y',
 ];

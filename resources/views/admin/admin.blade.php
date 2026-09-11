@@ -9,24 +9,24 @@
 <h1>{{ $serverName }}</h1>
 <svg width="100%" height="500px">
 	<!-- First the axes: -->
-	<!-- Y-Achse -->
+	<!-- Y axis -->
 	<line x1="1%" y1="0" x2="1%" y2="95%" style="stroke:rgb(0,0,0);stroke-width:3" />
 	<line x1="1%" y1="0" x2="0" y2="3%" style="stroke:rgb(0,0,0);stroke-width:3" />
 	<line x1="1%" y1="0" x2="2%" y2="3%" style="stroke:rgb(0,0,0);stroke-width:3" />
 
-	<!-- Beschriftungen der Y-Achse -->
+	<!-- Y axis labels -->
 	@for( $y = ((95-0) / 10); $y < ((95-0) / 10) * 10; $y = $y + ((95-0) / 10) )
 	<line x1="0.5%" y1="{{ $y }}%" x2="1.5%" y2="{{ $y }}%" style="stroke:rgb(0,0,0);stroke-width:1" />
 	<text x="1.8%" y="{{ $y }}%" fill="black" style="font-size:10px;">{{ 100 - (($y / 95)*100) }}</text>
 	@endfor
-	<text x="3%" y="2%" fill="red">Anzahl Worker: x</text>
+	<text x="3%" y="2%" fill="red">{{ trans('admin.admin.worker_count') }}</text>
 
-	<!-- X-Achse -->
+	<!-- X axis -->
 	<line x1="1%" y1="95%" x2="99%" y2="95%" style="stroke:rgb(0,0,0);stroke-width:3" />
 	<line x1="99%" y1="95%" x2="98%" y2="92%" style="stroke:rgb(0,0,0);stroke-width:3" />
 	<line x1="99%" y1="95%" x2="98%" y2="98%" style="stroke:rgb(0,0,0);stroke-width:3" />
 
-	<!-- Beschriftungen der X-Achse -->
+	<!-- X axis labels -->
 	<?php
 	$last = 0;
 	for( $x = (((99-1) / $time) + 1); $x < 98.9; $x = ($x + ((99-1) / $time)) )
@@ -39,9 +39,9 @@
 		}
 	}
 	?>
-	<text x="95%" y="90%" fill="red">Zeit (h): y</text>
+	<text x="95%" y="90%" fill="red">{{ trans('admin.admin.time') }}</text>
 
-	<!-- Nun die Datenpunkte: -->
+	<!-- Now the data points: -->
 	<?php
 		$count = 0;
 		$maximum = 0;

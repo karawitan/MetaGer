@@ -1,0 +1,15 @@
+<?php
+
+return [
+	'heading' => 'Mit Ihnen zusammen: Für die unabhängige, nicht-kommerzielle Internet-Suche',
+	'p1' => 'MetaGer ist seit 16.08.2016 Freie Software unter GNU AGPL v3, damit unser strikter Schutz Ihrer Daten und Ihrer Privatsphäre öffentlich nachprüfbar ist. Weitere Hintergrundinfo dazu im <a href="http://heise.de/-3295586" target="_blank">Heise-Newsticker</a>. Den Quellcode von MetaGer erreichen Sie unter <a href="https://gitlab.metager3.de/open-source/MetaGer" target="_blank">https://gitlab.metager3.de/open-source/MetaGer</a>.',
+	'p2' => 'Mit Ihnen zusammen haben wir in den vergangenen Monaten eine neue Erfolgsstory geschrieben: die Zahl der MetaGer-Nutzer steigt weiter und stetig. Es ist kein Strohfeuer kurzfristigen Erfolges, sondern es ist die Stetigkeit dieser Steigerung, die unseren Erfolg begründet. In drei Jahren haben wir unsere Abfragezahlen verdreifacht. Wir sind nach Expertenmeinung die sicherste Suchmaschine der Welt. Unsere Suchergebnisse sind zielgenau und treffsicher. Beides verdanken wir der Tatsache, dass wir Programmierer fest anstellen konnten. Aber auch Programmierer können nicht allein von der Liebe zur Sache leben: Nur dank Ihrer Spendenbereitschaft konnten wir das finanziell stemmen.',
+	'p3' => 'Wir mussten auch einen Prozess gegen die Ausuferung des "Rechts auf Vergessen" (nach dem EuGH Urteil vom 13.5.2014) durchstehen, um weiterhin einen unzensierten Betrieb von Suchmaschinen zu ermöglichen (<a href="http://suma-ev.de/presse/Suchmaschine-MetaGer-totgeklagt.html" target="_blank">http://suma-ev.de/presse/Suchmaschine-MetaGer-totgeklagt.html</a>). Wir haben in allen Instanzen gewonnen. Anschließend jedoch hat die Klägerin sich für zahlungsunfähig erklärt. Wir werden wohl auf den Kosten sitzenbleiben, was unsere Finanzen weiter belastet.',
+	'h3_1' => 'Um unsere gemeinsamen Erfolge fortzuschreiben, benötigen wir jetzt wieder Ihre Hilfe.',
+	'p4' => 'Eine Internet-Suchmaschine muss stetig weiterentwickelt werden, wenn sie nicht binnen kurzem veraltet sein soll. Unsere Werbeeinnahmen sind stark gesunken. Eigentlich wollen wir in MetaGer auch gar keine Werbung. Aber solange das Spendenaufkommen nicht reicht, können wir darauf noch nicht verzichten.',
+	'p5' => 'Wir bitten um Ihre Hilfe, damit wir MetaGer als unabhängige Alternative in einem gemeinnützigen Verein weiter entwickeln und betreiben können. Große Teile des Internet versinken im Kommerz und Werbemüll.',
+	'p6' => 'Lassen Sie uns gemeinsam ein Zeichen gegen die zunehmende Kommerzialisierung des Internet setzen! Der Betreiberverein von MetaGer, der SUMA-EV, ist als gemeinnütziger Verein seit 2004 in das Register beim Amtsgericht Hannover unter VR200033 eingetragen.',
+	'p7' => 'Bitte unterstützen Sie uns, damit die unabhängige, nicht-kommerzielle Suche im Internet weiter entwickelt und betrieben werden kann:',
+	'h3_2' => 'Helfen Sie mit, dass freie Suchmaschinen im Internet frei bleiben. Das digitale Wissen der Welt muss ohne Bevormundung durch Staaten oder Konzerne frei zugänglich sein und bleiben.',
+	'emails_heading' => 'Aus den EMails vorheriger Spender:',
+];
