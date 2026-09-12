@@ -14,23 +14,23 @@ class MetaGerSearch extends Controller
     {
         #die($request->header('User-Agent'));
         $time = microtime();
-        # Mit gelieferte Formulardaten parsen und abspeichern:
+        # Parse and save the supplied form data:
         $metager->parseFormData($request);
         #if($metager->getFokus() !== "bilder" )
         #{
-            # Nach Spezialsuchen überprüfen:
+            # Check for special searches:
             $metager->checkSpecialSearches($request);
         #}
-        # Alle Suchmaschinen erstellen
+        # Create all search engines
         $metager->createSearchEngines($request);
 
-        # Alle Ergebnisse vor der Zusammenführung ranken:
+        # Rank all results before merging:
         $metager->rankAll();
 
-        # Ergebnisse der Suchmaschinen kombinieren:
+        # Combine the results of the search engines:
         $metager->combineResults();
-        
-        # Die Ausgabe erstellen:
+
+        # Create the output:
         return $metager->createView();
     }
 
@@ -38,7 +38,7 @@ class MetaGerSearch extends Controller
     {
         $q = $request->input('q', '');
 
-        # Zunächst den Spruch
+        # First the quote
         $spruecheFile = storage_path() . "/app/public/sprueche.txt";
         if( file_exists($spruecheFile) && $request->has('sprueche') )
         {
@@ -49,7 +49,7 @@ class MetaGerSearch extends Controller
             $spruch = "";
         }
 
-        # Die manuellen Quicktips:
+        # The manual quick tips:
         $file = storage_path() . "/app/public/qtdata.csv";
         
         $mquicktips = [];
@@ -91,7 +91,7 @@ class MetaGerSearch extends Controller
                     $quicktip["title"] = $result['displaytitle'];
                     $quicktip["URL"] = $result['fullurl'];
                     $quicktip["descr"] = strip_tags($result['extract']);
-                    $quicktip['gefVon'] = "aus <a href=\"https://de.wikipedia.org\" target=\"_blank\">Wikipedia, der freien Enzyklopädie</a>";
+                    $quicktip['gefVon'] = trans('messages.wikipedia_source');
 
                     $quicktips[] = $quicktip;
                 }
@@ -99,7 +99,7 @@ class MetaGerSearch extends Controller
         }
         $mquicktips = array_merge($mquicktips, $quicktips);
 
-        # Uns Natürlich das wussten Sie schon:
+        # And of course the "did you know":
         $file = storage_path() . "/app/public/tips.txt";
         if( file_exists($file) )
         {
@@ -109,7 +109,7 @@ class MetaGerSearch extends Controller
             $mquicktips[] = ['title' => 'Wussten Sie schon?', 'descr' => $tip, 'URL' => '/tips'];   
         }   
 
-        # Uns die Werbelinks:
+        # And the ad links:
         $file = storage_path() . "/app/public/ads.txt";
         if( file_exists($file) )
         {

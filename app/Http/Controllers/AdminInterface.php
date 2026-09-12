@@ -14,15 +14,15 @@ class AdminInterface extends Controller
     {
         $time = $request->input('time', 60);
 
-    	# Zunächst einmal die Redis-Verbindung:
+    	# First the Redis connection:
     	$redis = Redis::connection('redisLogs');
 
-    	# Dann lesen wir alle Server aus:
+    	# Then we read all servers:
     	$member = $redis->smembers('logs.worker');
         $today = strtotime(date(DATE_RFC822, mktime(0,0,0, date("m"), date("d"), date("Y"))));
         $beginningTime = strtotime(date(DATE_RFC822, mktime(date("H"),date("i")-$time, date("s"), date("m"), date("d"), date("Y")))) - $today;
 
-    	# Jetzt besorgen wir uns die Daten für jeden Server:
+    	# Now we get the data for each server:
     	$data = [];
     	foreach( $member as $mem )
     	{
@@ -74,7 +74,7 @@ class AdminInterface extends Controller
                 }
                 $oldLogs[$i]['sameTime'] = $sameTime;
                 $oldLogs[$i]['insgesamt'] = $insgesamt;
-                # Nun noch den median:
+                # Now the median:
                 $count += $insgesamt;
                 $size++;
                 if($size > 0)

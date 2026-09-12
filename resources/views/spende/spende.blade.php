@@ -13,32 +13,6 @@
 		<p>{{ trans('spenden.bankinfo.2') }}</p>
 		<p class="text-muted">{{ trans('spenden.bankinfo.3') }}</p>
 		<hr>
-		<div class="col-lg-6 col-md-12 col-sm-12 others ppbc">
-			<h2>{!! trans('spenden.logos.1') !!}</h2>
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-				<input name="cmd" value="_xclick" type="hidden">
-				<input name="business" value="wsb@suma-ev.de" type="hidden">
-				<input name="item_name" value="SuMa-eV Spende" type="hidden">
-				<input name="buyer_credit_promo_code" value="" type="hidden">
-				<input name="buyer_credit_product_category" value="" type="hidden">
-				<input name="buyer_credit_shipping_method" value="" type="hidden">
-				<input name="buyer_credit_user_address_change" value="" type="hidden">
-				<input name="no_shipping" value="0" type="hidden">
-				<input name="no_note" value="1" type="hidden">
-				<input name="currency_code" value="EUR" type="hidden">
-				<input name="tax" value="0" type="hidden">
-				<input name="lc" value="DE" type="hidden">
-				<input name="bn" value="PP-DonationsBF" type="hidden">
-				<input src="/img/paypalspenden.gif" name="submit" width="120px" alt="Spenden Sie mit PayPal - schnell, kostenlos und sicher!" type="image">
-			</form>
-		</div>
-		<div class="col-lg-6 col-md-12 col-sm-12 others ppbc">
-			<h2>{!! trans('spenden.logos.2') !!}</h2>
-			Unsere Bitcoin-Adresse:<br/>
-			<a href="bitcoin:174SDRNZqM2WNobHhCDqD1VXbnZYFXNf8V">174SDRNZqM2WNobHhCDqD1VXbnZYFXNf8V</a>
-		</div>
-		<div class="clearfix"></div>
-		<hr>
 		<h2 id="lastschrift">{{ trans('spenden.lastschrift.1') }}</h2>
 		<p>{{ trans('spenden.lastschrift.2') }}</p>
 		<form role="form" method="POST">

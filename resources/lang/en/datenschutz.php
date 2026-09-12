@@ -37,4 +37,21 @@ have to believe us, YOU might control it yourself!',
     'policy.22' => ', fully unprotected against the access of local authorities. Thus they cannot provide protection of personal data (even if they really try to).',
 
     'twitter'   => 'What others say about our privacy-concept on twitter:',
+    'twitter_quotes' => [
+        '> 7.4.2014 C. Schulzki-Haddouti @kooptech
+> MetaGer is probably the most secure search engine in the world right now',
+        '> 8.4.2014 Stiftung Datenschutz @DS_Stiftung
+> If the search result should remain anonymous: @MetaGer, the non-profit
+> search engine from #Hannover',
+        '> 8.4.2014 Markus K&auml;kenmeister @markus2009
+> Search engine without tracking',
+        '> 8.4.2014 Marko [~sHaKaL~] @mobilef0rensics Nice; anonymous Search and find
+> with MetaGer',
+        '> 7.4.2014 Anfahrer @anfahrer
+> Web search with #privacy thanks to #MetaGer : Anonymous search and
+> results via proxy',
+        '> 8.4.2014 stupidit&eacute; pue @dummheitstinkt
+> wow, is this the MetaGer I used in the end 90s in internet cafes???
+> "Anonymous search and find with MetaGer | heise"',
+    ],
 ];

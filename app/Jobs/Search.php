@@ -60,7 +60,7 @@ class Search extends Job implements ShouldQueue
     private function readAnswer ()
     {
         $time = microtime(true);
-        $headers = '';
+        $headers = [];
         $body = '';
         $length = 0;
 
@@ -270,13 +270,13 @@ class Search extends Job implements ShouldQueue
 
     private function getFreeSocket()
     {
-        # Je nach Auslastung des Servers ( gleichzeitige Abfragen ), kann es sein, dass wir mehrere Sockets benötigen um die Abfragen ohne Wartezeit beantworten zu können.
-        # pfsockopen öffnet dabei einen persistenten Socket, der also auch zwischen den verschiedenen php Prozessen geteilt werden kann. 
-        # Wenn der Hostname mit einem bereits erstellten Socket übereinstimmt, wird die Verbindung also aufgegriffen und fortgeführt.
-        # Allerdings dürfen wir diesen nur verwenden, wenn er nicht bereits von einem anderen Prozess zur Kommunikation verwendet wird.
-        # Wenn dem so ist, probieren wir den nächsten Socket zu verwenden.
-        # Dies festzustellen ist komplizierter, als man sich das vorstellt. Folgendes System sollte funktionieren:
-        # 1. Stelle fest, ob dieser Socket neu erstellt wurde, oder ob ein existierender geöffnet wurde.
+        # Depending on the server load (concurrent requests), it may happen that we need several sockets to answer the requests without waiting time.
+        # pfsockopen opens a persistent socket, which can also be shared between the different php processes.
+        # If the host name matches an already created socket, the connection is picked up and continued.
+        # However, we may only use it if it is not already being used by another process for communication.
+        # If this is the case, we try to use the next socket.
+        # Determining this is more complicated than you might imagine. The following system should work:
+        # 1. Determine whether this socket was newly created or whether an existing one was opened.
         $counter = 0; $fp = null;
         do
         {

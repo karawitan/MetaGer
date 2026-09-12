@@ -38,11 +38,11 @@
                 <li>{{ trans('index.plugin.firefox.1') }}<img src="/img/Firefox.png" width="100%" /></li>
                 <li>{{ trans('index.plugin.firefox.2') }}<img src="/img/Firefox_Standard.png" width="100%" /></li>
               </ol>
-              <h4>MetaGer als Startseite im {{ $browser }} einrichten</h4>
+              <h4>{{ trans('index.startpage.heading', ['browser' => $browser]) }}</h4>
               <hr />
               <ol>
-                <li>Klicken Sie oben rechts im Browser auf <span class="glyphicon glyphicon-menu-hamburger"></span> und öffnen Sie die "Einstellungen"</li>
-                <li>Tragen Sie im Feld "Startseite" "https://metager.de" ein.</li>
+                <li>{!! trans('index.startpage.firefox.1') !!}</li>
+                <li>{{ trans('index.startpage.firefox.2') }}</li>
               </ol>
             @elseif ($browser === 'Chrome')
               <ol>
@@ -50,13 +50,13 @@
                 <li>{!! trans('index.plugin.chrome.2') !!}</li>
                 <li>{{ trans('index.plugin.chrome.3') }}</li>
               </ol>
-              <h4>MetaGer als Startseite im {{ $browser }} einrichten</h4>
+              <h4>{{ trans('index.startpage.heading', ['browser' => $browser]) }}</h4>
               <hr />
               <ol>
-                <li>Klicken Sie oben rechts im Browser auf <span class="glyphicon glyphicon-option-vertical"></span> und öffnen Sie die "Einstellungen"</li>
-                <li>Im Bereich "Beim Start" wählen Sie "Bestimmte Seite oder Seiten öffnen und klicken anschließend auf "Seiten festlegen"</li>
-                <li>Tragen Sie "https://metager.de" als URL bei "Neue Seite hinzufügen ein"</li>
-                <li>Hinweis: Alle hier sichtbaren Webseiten werden nun beim Start des Browsers geöffnet. Sie können Einträge entfernen, indem Sie mit der Maus drüber fahren und rechts auf das "x" klicken.</li>
+                <li>{!! trans('index.startpage.chrome.1') !!}</li>
+                <li>{{ trans('index.startpage.chrome.2') }}</li>
+                <li>{{ trans('index.startpage.chrome.3') }}</li>
+                <li>{{ trans('index.startpage.chrome.4') }}</li>
               </ol>
             @elseif ($browser === 'Opera')
               <ol>
@@ -66,14 +66,13 @@
                 <li>{{ trans('index.plugin.opera.6') }}</li>
                 <li><small>{{ trans('index.plugin.opera.7') }}<a href="https://www.mozilla.org/de/firefox/new/" target="_blank">{{ trans('index.plugin.opera.8') }}</a>{{ trans('index.plugin.opera.9') }}</small>
               </ol>
-              <h4>MetaGer als Startseite im {{ $browser }} einrichten</h4>
+              <h4>{{ trans('index.startpage.heading', ['browser' => $browser]) }}</h4>
               <hr />
               <ol>
-                <li>Klicken Sie im Browser-Menü auf "Bearbeiten"->"Einstellungen"</li>
-                <li>Im Bereich "Beim Starten" wählen Sie "Eine bestimmte Seite, oder bestimmte Seiten öffnen
-" und anschließend "Seiten festlegen"</li>
-                <li>Tragen Sie bei "Adresse eingeben" "https://metager.de" ein und bestätigen mit Enter</li>
-                <li>Klicken Sie auf "OK"</li>
+                <li>{{ trans('index.startpage.opera.1') }}</li>
+                <li>{{ trans('index.startpage.opera.2') }}</li>
+                <li>{{ trans('index.startpage.opera.3') }}</li>
+                <li>{{ trans('index.startpage.opera.4') }}</li>
               </ol>
             @elseif ($browser === 'IE')
               <ol>
@@ -83,12 +82,12 @@
                 <li>{{ trans('index.plugin.IE.6') }}</li>
                 <li>{{ trans('index.plugin.IE.7') }}</li>
               </ol>
-              <h4>MetaGer als Startseite im {{ $browser }} einrichten</h4>
+              <h4>{{ trans('index.startpage.heading', ['browser' => $browser]) }}</h4>
               <hr />
               <ol>
-                <li>Klicken Sie oben rechts im Browser auf <span class="glyphicon glyphicon-cog"></span> und öffnen Sie die "Internetoptionen"</li>
-                <li>Falls MetaGer die einzige Startseite sein soll, markieren Sie im Textfeld den kompletten Text und ersetzen Ihn durch "https://metager.de"</li>
-                <li>Klicken Sie auf "OK"</li>
+                <li>{!! trans('index.startpage.IE.1') !!}</li>
+                <li>{{ trans('index.startpage.IE.2') }}</li>
+                <li>{{ trans('index.startpage.IE.3') }}</li>
               </ol>
             @elseif ($browser === 'Edge')
               <ol>
@@ -97,14 +96,14 @@
                 <li>{{ trans('index.plugin.edge.4') }}</li>
                 <li>{{ trans('index.plugin.edge.5') }}</li>
               </ol>
-              <h4>MetaGer als Startseite im {{ $browser }} einrichten</h4>
+              <h4>{{ trans('index.startpage.heading', ['browser' => $browser]) }}</h4>
               <hr />
               <ol>
-                <li>Klicken Sie oben rechts im Browser auf <span class="glyphicon glyphicon-option-horizontal"></span> und öffnen Sie die "Einstellungen"</li>
-                <li>Wählen Sie im Bereich "Öffnen mit" den Punkt "Bestimmte Seite(n)" aus</li>
-                <li>Im Dropdown-Menü darunter wählen Sie "Benutzerdefiniert" aus</li>
-                <li>Im Bereich darunter tragen Sie "https://metager.de" in das Feld "Webadresse eingeben" ein und klicken auf das "+" Symbol</li>
-                <li>Entfernen Sie alle Einträge, die beim Start nicht geöffnet werden sollen (z.B. about:start), indem Sie rechts auf das kleine "x" klicken.</li>
+                <li>{!! trans('index.startpage.edge.1') !!}</li>
+                <li>{{ trans('index.startpage.edge.2') }}</li>
+                <li>{{ trans('index.startpage.edge.3') }}</li>
+                <li>{{ trans('index.startpage.edge.4') }}</li>
+                <li>{{ trans('index.startpage.edge.5') }}</li>
               </ol>
             @endif
           </div>
@@ -121,7 +120,7 @@
               <label id="web-label" for="web">
                 <span class="glyphicon glyphicon-globe">
                 </span>
-                <span class="content">Web
+                <span class="content">{{ trans('index.foki.web') }}
                 </span>
               </label>
               <input id="bilder" type="radio" name="focus" value="bilder" form="searchForm" @if ($focus === 'bilder') checked @endif required="">
@@ -171,7 +170,7 @@
               <form id="searchForm" method="GET" action="{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), "/meta/meta.ger3") }}" accept-charset="UTF-8">
                 <div class="input-group">
                   <div class="input-group-addon">
-                    <button type="button" data-toggle="popover" data-html="true" data-container="body" title="Pers&ouml;nliches Design ausw&auml;hlen" data-content='&lt;ul id="color-chooser" class="list-inline list-unstyled"&gt;
+                    <button type="button" data-toggle="popover" data-html="true" data-container="body" title="{{ trans('index.design.title') }}" data-content='&lt;ul id="color-chooser" class="list-inline list-unstyled"&gt;
 &lt;li &gt;&lt;a id="standard" data-rgba="255,194,107,1" href="javascript:void(0)"&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li &gt;&lt;a id="standardHard" data-rgba="255,128,0,1" href="javascript:void(0)"&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li &gt;&lt;a id="blue" data-rgba="164,192,230,1" href="javascript:void(0)"&gt;&lt;/a&gt;&lt;/li&gt;
@@ -227,38 +226,4 @@
             </ul>
           </figure>
         
-@endsection
-
-@section('optionalContent')
-<section id="moreInformation" class="hidden-xs">
-          <h1 class="hidden">{{ trans('index.sponsors.head.1') }}</h1>
-          <div class="row">
-            <div id="sponsors" class="col-md-6 col-sm12">
-              <h2>{{ trans('index.sponsors.head.2') }}</h2>
-              <ul>
-                <li>
-                  {!! trans('index.sponsors.woxikon') !!}</a>
-                </li>
-                <li>
-                  {!! trans('index.sponsors.gutscheine') !!}
-                </li>
-                <li>
-                  {!! trans('index.sponsors.kredite') !!}
-                </li>
-              </ul>
-            </div>
-            <div class="col-md-6 col-sm-12">
-              <h2>
-                <a href="{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), "about") }}">{{ trans('index.about.title') }}</a>
-              </h2>
-              <ul>
-                <li>
-                  <a href="{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), "datenschutz") }}">{{ trans('index.about.1.1') }}</a>{{ trans('index.about.1.2') }}
-                </li>
-                <li>{{ trans('index.about.2.1') }}<a href="{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), "spende") }}">{{ trans('index.about.2.2') }}</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
 @endsection

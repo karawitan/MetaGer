@@ -12,7 +12,7 @@
 			{{ $ad['anzeigeLink'] }}
 			</a>
 			<span class="hoster">
-				Werbung von {!! $ad['gefVon'] !!}
+				{{ trans('results.ad_from') }} {!! $ad['gefVon'] !!}
 			</span>
 		</p>
 		<p class="description">

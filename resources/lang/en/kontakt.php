@@ -23,4 +23,6 @@ We use Javascript for this.',
 
 	'letter.1' => 'By Letter Mail',
 	'letter.2' => 'We prefer digital contact. However, if you consider it neccessary to contact us postally, you can mail us at:',
+	'form.email_placeholder' => 'Your email address (optional)',
+	'form.message_placeholder' => 'Your message',
 ];

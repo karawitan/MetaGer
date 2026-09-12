@@ -5,12 +5,12 @@
 @section('content')
 <h2>{{ exec("uptime") }}</h2>
 <table class="table table-striped">
-	<caption>Daten der letzten Tage</caption>
+	<caption>{{ trans('admin.count.caption') }}</caption>
 	<tr>
-		<th>Datum</th>
-		<th>Suchanfragen zur gleichen Zeit</th>
-		<th>Suchanfragen insgesamt</th>
-		<th>Mittelwert (bis zum jeweiligen Tag zurück)</th>
+		<th>{{ trans('admin.count.date') }}</th>
+		<th>{{ trans('admin.count.same_time') }}</th>
+		<th>{{ trans('admin.count.total') }}</th>
+		<th>{{ trans('admin.count.mean') }}</th>
 	</tr>
 	@if( isset($today) )
 	<tr>
@@ -31,6 +31,6 @@
 </table>
 
 @if( isset($rekordDate) && isset($rekordTagSameTime) && isset($rekordCount) )
-<h3>Rekord am {{ $rekordDate }} zur gleichen Zeit <span class="text-info">{{ $rekordTagSameTime }}</span> - insgesamt <span class="text-danger">{{ $rekordCount }}</span></h3>
+<h3>{!! trans('admin.count.record', ['date' => $rekordDate, 'same_time' => $rekordTagSameTime, 'total' => $rekordCount]) !!}</h3>
 @endif
 @endsection

@@ -13,9 +13,9 @@
 
 	Route::group(
 		[
-			'prefix' => LaravelLocalization::setLocale()/*, 
-			'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]*/
-		], 
+			'prefix' => LaravelLocalization::setLocale(),
+			'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
+		],
 		function()
 		{
 		/** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/

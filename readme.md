@@ -1,10 +1,10 @@
 # MetaGer
 
-[MetaGer](https://metager.de) ist seit 16.08.2016 Freie Software unter GNU AGPL v3, damit unser strikter Schutz Ihrer Daten und Ihrer Privatsphäre 
-öffentlich nachprüfbar ist, und damit Sie als Programmierer mithelfen können, alles noch besser zu machen. Weitere Hintergrundinfo dazu im 
-<a href="http://heise.de/-3295586" target="_blank">Heise-Newsticker</a>.
+[MetaGer](https://metager.de) has been Free Software under the GNU AGPL v3 since 16.08.2016, so that our strict protection of your data and your privacy
+can be publicly verified, and so that you as a programmer can help make everything even better. Further background information can be found in the
+<a href="http://heise.de/-3295586" target="_blank">Heise news ticker</a>.
 
-## Abhängigkeiten
+## Dependencies
 * composer (https://getcomposer.org/)
 * php7.0
   * php7.0-mbstring
@@ -12,32 +12,32 @@
   * php7.0-xml
 * sqlite3
 * redis-server
-* Das Perl-Paket: Lingua::Identify (http://search.cpan.org/~ambs/Lingua-Identify-0.56/lib/Lingua/Identify.pm)
+* The Perl package: Lingua::Identify (http://search.cpan.org/~ambs/Lingua-Identify-0.56/lib/Lingua/Identify.pm)
 
-## MetaGer zu langsam?
-Damit MetaGer so schnell wird, wie auf unserem Live-Server, erfordert es ein wenig Konfigurationsarbeit. Der Grund, warum die Version nach dem Checkout langsamer als normal ist, ist der, dass die eingestellten Suchmaschinen im Standard synchron abgefragt werden.
-Das heißt, dass bei einer Suche mit 20 Suchmaschinen eine  Suchmaschine nach der anderen abgefragt wird.
-Die parallele abarbeitung kann mit Hilfe von Laravels Queue-System ( https://laravel.com/docs/5.2/queues ) hergestellt werden.
-Im Standard, ist in der Datei ".env" QUEUE_DRIVER=sync gesetzt.
-Wir verwenden auf unseren Servern den QUEUE_DRIVER=redis und haben mit Hilfe von Supervisor ( https://laravel.com/docs/5.2/queues#supervisor-configuration ) eine Menge queue:worker Prozesse am laufen, die für eine parallele bearbeitung sorgen.
+## MetaGer too slow?
+For MetaGer to become as fast as on our live server, a little configuration work is required. The reason the version after checkout is slower than normal is that the configured search engines are queried synchronously by default.
+This means that when searching with 20 search engines, one search engine is queried after the other.
+Parallel processing can be achieved with the help of Laravel's queue system ( https://laravel.com/docs/5.2/queues ).
+By default, QUEUE_DRIVER=sync is set in the ".env" file.
+On our servers we use QUEUE_DRIVER=redis and, with the help of Supervisor ( https://laravel.com/docs/5.2/queues#supervisor-configuration ), we have many queue:worker processes running that ensure parallel processing.
 
-## Offizielle Dokumentation
+## Official Documentation
 
-Die Dokumentation ist im Wiki des Gitlab-Projektes zu finden.
+The documentation can be found in the wiki of the Gitlab project.
 
-## Beiträge
+## Contributing
 
-Vielen Dank, dass du erwägst, zu MetaGer beizutragen!
-Leider sind wir noch nicht bereit, Änderungen von außen aufzunehmen.
-Es steht dir jedoch frei, ein Ticket zu eröffnen.
+Thank you for considering contributing to MetaGer!
+Unfortunately, we are not yet ready to accept changes from outside.
+However, you are free to open a ticket.
 
-## Sicherheitslücken
+## Security Vulnerabilities
 
-Falls du eine Sicherheitslücke findest oder dir etwas unsicher vorkommt,
-zögere bitte nicht ein Ticket zu schreiben oder eine Mail an [office@suma-ev.de](mailto:office@suma-ev.de) zu senden.
+If you find a security vulnerability or something seems insecure to you,
+please do not hesitate to write a ticket or send an email to [office@suma-ev.de](mailto:office@suma-ev.de).
 
-## Lizenzen
+## Licenses
 
-Der MetaGer-eigene Code, sofern nicht anders anders angegeben, steht unter der [AGPL-Lizenz Version 3](https://www.gnu.org/licenses/agpl-3.0).
+The MetaGer-specific code, unless otherwise noted, is licensed under the [AGPL License Version 3](https://www.gnu.org/licenses/agpl-3.0).
 
-Eine Liste der Projekte, auf denen MetaGer basiert, und deren Lizenzen sind in der Datei LICENSE zu finden. 
+A list of the projects MetaGer is based on, and their licenses, can be found in the LICENSE file.

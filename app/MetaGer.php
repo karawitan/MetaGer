@@ -13,7 +13,7 @@ use Redis;
 
 class MetaGer
 {
-    # Einstellungen für die Suche
+    # Settings for the search
     protected $fokus;
     protected $eingabe;
     protected $q;
@@ -33,11 +33,11 @@ class MetaGer
     protected $warnings        = [];
     protected $errors          = [];
     protected $addedHosts      = [];
-    # Daten über die Abfrage
+    # Data about the query
     protected $ip;
     protected $language;
     protected $agent;
-    # Konfigurationseinstellungen:
+    # Configuration settings:
     protected $sumaFile;
     protected $mobile;
     protected $resultCount;
@@ -51,7 +51,7 @@ class MetaGer
     {
         $this->starttime = microtime(true);
         if (file_exists(config_path() . "/blacklistDomains.txt") && file_exists(config_path() . "/blacklistUrl.txt")) {
-            # Blacklists einlesen:
+            # Read in blacklists:
             $tmp                      = file_get_contents(config_path() . "/blacklistDomains.txt");
             $this->domainsBlacklisted = explode("\n", $tmp);
             $tmp                      = file_get_contents(config_path() . "/blacklistUrl.txt");
@@ -81,12 +81,12 @@ class MetaGer
     {
         $viewResults = [];
 
-        # Wir extrahieren alle notwendigen Variablen und geben Sie an unseren View:
+        # We extract all necessary variables and pass them to our view:
         foreach ($this->results as $result) {
             $viewResults[] = get_object_vars($result);
         }
 
-        # Wir müssen natürlich noch den Log für die durchgeführte Suche schreiben:
+        # Of course we still need to write the log for the performed search:
         $this->createLogs();
 
         if ($this->fokus === "bilder") {
@@ -250,10 +250,10 @@ class MetaGer
         //Slice the collection to get the items to display in current page
         $currentPageSearchResults = $collection->slice($offset * $perPage, $perPage)->all();
 
-        # Für diese 20 Links folgt nun unsere Boost-Implementation.
+        # Now follows our boost implementation for these 20 links.
         $currentPageSearchResults = $this->parseBoost($currentPageSearchResults);
 
-        # Für diese 20 Links folgt nun unsere Adgoal- Implementation.
+        # Now follows our Adgoal implementation for these 20 links.
         $currentPageSearchResults = $this->parseAdgoal($currentPageSearchResults);
 
         //Create our paginator and pass it to the view
@@ -275,8 +275,8 @@ class MetaGer
 
         $this->validated = false;
         if (isset($this->password)) {
-            # Wir bieten einen bezahlten API-Zugriff an, bei dem dementsprechend die Werbung ausgeblendet wurde:
-            # Aktuell ist es nur die Uni-Mainz. Deshalb überprüfen wir auch nur diese.
+            # We offer a paid API access where the advertising is hidden accordingly:
+            # Currently it is only Uni-Mainz. Therefore we only check this one.
             $password = getenv('mainz');
             $eingabe  = $this->eingabe;
             $password = md5($eingabe . $password);
@@ -287,7 +287,7 @@ class MetaGer
         }
 
         if (count($this->results) <= 0) {
-            $this->errors[] = "Leider konnten wir zu Ihrer Sucheingabe keine passenden Ergebnisse finden. Sie können aber versuchen diese anzupassen.";
+            $this->errors[] = trans('messages.no_results');
         }
     }
 
@@ -325,7 +325,7 @@ class MetaGer
             }
             $tldList = rtrim($tldList, ",");
 
-            # Hashwert
+            # Hash value
             $hash = md5("meta" . $publicKey . $tldList . "GER");
 
             # Query
@@ -334,22 +334,22 @@ class MetaGer
             $link   = "https://api.smartredirect.de/api_v2/CheckForAffiliateUniversalsearchMetager.php?p=" . $publicKey . "&k=" . $hash . "&tld=" . $tldList . "&q=" . $query;
             $answer = json_decode(file_get_contents($link));
 
-            # Nun müssen wir nur noch die Links für die Advertiser ändern:
+            # Now we only need to change the links for the advertisers:
             foreach ($answer as $el) {
                 $hoster = $el[0];
                 $hash   = $el[1];
 
                 foreach ($results as $result) {
                     if ($hoster === $result->tld) {
-                        # Hier ist ein Advertiser:
-                        # Das Logo hinzufügen:
+                        # Here is an advertiser:
+                        # Add the logo:
                         if ($result->image !== "") {
                             $result->logo = "https://img.smartredirect.de/logos_v2/60x30/" . $hash . ".gif";
                         } else {
                             $result->image = "https://img.smartredirect.de/logos_v2/120x60/" . $hash . ".gif";
                         }
 
-                        # Den Link hinzufügen:
+                        # Add the link:
                         $publicKey = $publicKey;
                         $targetUrl = $result->anzeigeLink;
                         if (strpos($targetUrl, "http") !== 0) {
@@ -377,7 +377,7 @@ class MetaGer
             return;
         }
 
-        # Überprüfe, welche Sumas eingeschaltet sind
+        # Check which search engines are enabled
         $xml                  = simplexml_load_file($this->sumaFile);
         $enabledSearchengines = [];
         $overtureEnabled      = false;
@@ -431,7 +431,7 @@ class MetaGer
             }
         }
 
-        # Sonderregelung für alle Suchmaschinen, die zu den Minisuchern gehören. Diese können alle gemeinsam über einen Link abgefragt werden
+        # Special rule for all search engines that belong to the mini searchers. These can all be queried together via a single link
         $subcollections = [];
         $tmp            = [];
         foreach ($enabledSearchengines as $engine) {
@@ -455,13 +455,13 @@ class MetaGer
         #die(var_dump($enabledSearchengines));
 
         if ($countSumas <= 0) {
-            $this->errors[] = "Achtung: Sie haben in ihren Einstellungen keine Suchmaschine ausgewählt.";
+            $this->errors[] = trans('messages.no_engine_selected');
         }
         $engines = [];
 
         $siteSearchFailed = false;
         if (strlen($this->site) > 0) {
-            # Wenn eine Sitesearch durchgeführt werden soll, überprüfen wir ob eine der Suchmaschinen überhaupt eine Sitesearch unterstützt:
+            # If a site search is to be performed, we check whether any of the search engines supports a site search at all:
             $enginesWithSite = 0;
             foreach ($enabledSearchengines as $engine) {
                 if (isset($engine['hasSiteSearch']) && $engine['hasSiteSearch']->__toString() === "1") {
@@ -469,10 +469,10 @@ class MetaGer
                 }
             }
             if ($enginesWithSite === 0) {
-                $this->errors[]   = "Sie wollten eine Sitesearch auf " . $this->site . " durchführen. Leider unterstützen die eingestellten Suchmaschinen diese nicht. Sie können <a href=\"" . $this->generateSearchLink("web", false) . "\">hier</a> die Sitesearch im Web-Fokus durchführen. Es werden ihnen Ergebnisse ohne Sitesearch angezeigt.";
+                $this->errors[]   = trans('messages.site_search_unsupported', ['site' => $this->site, 'link' => $this->generateSearchLink("web", false)]);
                 $siteSearchFailed = true;
             } else {
-                $this->warnings[] = "Sie führen eine Sitesearch durch. Es werden nur Ergebnisse von der Seite: <a href=\"http://" . $this->site . "\" target=\"_blank\">\"" . $this->site . "\"</a> angezeigt.";
+                $this->warnings[] = trans('messages.site_search_active', ['site' => $this->site]);
             }
 
         }
@@ -486,7 +486,7 @@ class MetaGer
 
                 continue;
             }
-            # Wenn diese Suchmaschine gar nicht eingeschaltet sein soll
+            # If this search engine should not be enabled at all
             $path = "App\Models\parserSkripte\\" . ucfirst($engine["package"]->__toString());
 
             if (!file_exists(app_path() . "/Models/parserSkripte/" . ucfirst($engine["package"]->__toString()) . ".php")) {
@@ -515,7 +515,7 @@ class MetaGer
 
         }
 
-        # Jetzt werden noch alle Kategorien der Settings durchgegangen und die jeweils enthaltenen namen der Suchmaschinen gespeichert.
+        # Now we also go through all categories of the settings and save the names of the search engines they contain.
         $foki = [];
         foreach ($sumas as $suma) {
             if ((!isset($suma['disabled']) || $suma['disabled'] === "") && (!isset($suma['userSelectable']) || $suma['userSelectable']->__toString() === "1")) {
@@ -532,7 +532,7 @@ class MetaGer
             }
         }
 
-        # Es werden auch die Namen der aktuell aktiven Suchmaschinen abgespeichert.
+        # The names of the currently active search engines are also saved.
         $realEngNames = [];
         foreach ($enabledSearchengines as $realEng) {
             $nam = $realEng["name"]->__toString();
@@ -540,7 +540,7 @@ class MetaGer
                 $realEngNames[] = $nam;
             }
         }
-        # Anschließend werden diese beiden Listen verglichen (jeweils eine der Fokuslisten für jeden Fokus), um herauszufinden ob sie vielleicht identisch sind. Ist dies der Fall, so hat der Nutzer anscheinend Suchmaschinen eines kompletten Fokus eingestellt. Der Fokus wird dementsprechend angepasst.
+        # Then these two lists are compared (one of the focus lists for each focus) to find out whether they might be identical. If this is the case, the user has apparently configured the search engines of a complete focus. The focus is adjusted accordingly.
         foreach ($foki as $fok => $engs) {
             $isFokus      = true;
             $fokiEngNames = [];
@@ -562,13 +562,13 @@ class MetaGer
             }
         }
 
-        # Nun passiert ein elementarer Schritt.
-        # Wir warten auf die Antwort der Suchmaschinen, da wir vorher nicht weiter machen können.
-        # aber natürlich nicht ewig.
-        # Die Verbindung steht zu diesem Zeitpunkt und auch unsere Request wurde schon gesendet.
-        # Wir geben der Suchmaschine nun bis zu 500ms Zeit zu antworten.
+        # Now an elementary step follows.
+        # We wait for the response of the search engines, because we cannot continue before that.
+        # but of course not forever.
+        # The connection is established at this point and our request has already been sent.
+        # We now give the search engine up to 500ms to respond.
 
-        # Wir zählen die Suchmaschinen, die durch den Cache beantwortet wurden:
+        # We count the search engines that were answered from the cache:
         $enginesToLoad = 0;
         $canBreak      = false;
         foreach ($engines as $engine) {
@@ -590,7 +590,7 @@ class MetaGer
                 $canBreak = true;
             }
 
-            # Abbruchbedingung
+            # Termination condition
             if ($time < 500) {
                 if (($enginesToLoad === 0 || $loadedEngines >= $enginesToLoad) && $canBreak) {
                     break;
@@ -619,7 +619,7 @@ class MetaGer
             }
         }
 
-        # und verwerfen den Rest:
+        # and discard the rest:
         foreach ($engines as $engine) {
             if (!$engine->loaded) {
                 $engine->shutdown();
@@ -633,7 +633,7 @@ class MetaGer
     public function parseFormData(Request $request)
     {
         if ($request->input('encoding', '') !== "utf8") {
-            # In früheren Versionen, als es den Encoding Parameter noch nicht gab, wurden die Daten in ISO-8859-1 übertragen
+            # In earlier versions, when the encoding parameter did not exist yet, the data was transmitted in ISO-8859-1
             $input = $request->all();
             foreach ($input as $key => $value) {
                 $input[$key] = mb_convert_encoding("$value", "UTF-8", "ISO-8859-1");
@@ -641,8 +641,8 @@ class MetaGer
             $request->replace($input);
         }
         $this->url = $request->url();
-        # Zunächst überprüfen wir die eingegebenen Einstellungen:
-        # FOKUS
+        # First we check the entered settings:
+        # FOCUS
         $this->fokus = trans('fokiNames.'
             . $request->input('focus', 'web'));
         if (strpos($this->fokus, ".")) {
@@ -659,10 +659,10 @@ class MetaGer
             die("Suma-File konnte nicht gefunden werden");
         }
 
-        # Sucheingabe:
+        # Search input:
         $this->eingabe = trim($request->input('eingabe', ''));
         if (strlen($this->eingabe) === 0) {
-            $this->warnings[] = 'Achtung: Sie haben keinen Suchbegriff eingegeben. Sie können ihre Suchbegriffe oben eingeben und es erneut versuchen.';
+            $this->warnings[] = trans('messages.no_search_term');
         }
         $this->q = $this->eingabe;
 
@@ -690,7 +690,7 @@ class MetaGer
         $this->agent  = new Agent();
         $this->mobile = $this->agent->isMobile();
 
-        #Sprüche
+        #Quotes
         $this->sprueche = $request->input('sprueche', 'off');
         if ($this->sprueche === "off") {
             $this->sprueche = true;
@@ -698,13 +698,13 @@ class MetaGer
             $this->sprueche = false;
         }
 
-        # Ergebnisse pro Seite:
+        # Results per page:
         $this->resultCount = $request->input('resultCount', '20');
 
-        # Manchmal müssen wir Parameter anpassen um den Sucheinstellungen gerecht zu werden:
+        # Sometimes we have to adjust parameters to comply with the search settings:
         if ($request->has('dart')) {
             $this->time       = 10000;
-            $this->warnings[] = "Hinweis: Sie haben Dart-Europe aktiviert. Die Suche kann deshalb länger dauern und die maximale Suchzeit wurde auf 10 Sekunden hochgesetzt.";
+            $this->warnings[] = trans('messages.dart_europe');
         }
         if ($this->time <= 500 || $this->time > 20000) {
             $this->time = 1000;
@@ -766,8 +766,8 @@ class MetaGer
         if ($request->has('site')) {
             $this->site = $request->input('site');
         }
-        # Wenn die Suchanfrage um das Schlüsselwort "-host:*" ergänzt ist, sollen bestimmte Hosts nicht eingeblendet werden
-        # Wir prüfen, ob das hier der Fall ist:
+        # If the search query is extended with the keyword "-host:*", certain hosts should not be displayed
+        # We check whether this is the case here:
         while (preg_match("/(.*)(^|\s)-host:(\S+)(.*)/si", $this->q, $match)) {
             $this->hostBlacklist[] = $match[3];
             $this->q               = $match[1] . $match[4];
@@ -780,8 +780,8 @@ class MetaGer
             $hostString       = rtrim($hostString, ", ");
             $this->warnings[] = "Ergebnisse von folgenden Hosts werden nicht angezeigt: \"" . $hostString . "\"";
         }
-        # Wenn die Suchanfrage um das Schlüsselwort "-domain:*" ergänzt ist, sollen bestimmte Domains nicht eingeblendet werden
-        # Wir prüfen, ob das hier der Fall ist:
+        # If the search query is extended with the keyword "-domain:*", certain domains should not be displayed
+        # We check whether this is the case here:
         while (preg_match("/(.*)(^|\s)-domain:(\S+)(.*)/si", $this->q, $match)) {
             $this->domainBlacklist[] = $match[3];
             $this->q                 = $match[1] . $match[4];
@@ -795,8 +795,8 @@ class MetaGer
             $this->warnings[] = "Ergebnisse von folgenden Domains werden nicht angezeigt: \"" . $domainString . "\"";
         }
 
-        # Alle mit "-" gepräfixten Worte sollen aus der Suche ausgeschlossen werden.
-        # Wir prüfen, ob das hier der Fall ist:
+        # All words prefixed with "-" should be excluded from the search.
+        # We check whether this is the case here:
         while (preg_match("/(.*)(^|\s)-(\S+)(.*)/si", $this->q, $match)) {
             $this->stopWords[] = $match[3];
             $this->q           = $match[1] . $match[4];
@@ -807,10 +807,10 @@ class MetaGer
                 $stopwordsString .= $stopword . ", ";
             }
             $stopwordsString  = rtrim($stopwordsString, ", ");
-            $this->warnings[] = "Sie machen eine Ausschlusssuche. Ergebnisse mit folgenden Wörtern werden nicht angezeigt: \"" . $stopwordsString . "\"";
+            $this->warnings[] = trans('messages.exclusion_search', ['words' => $stopwordsString]);
         }
 
-        # Meldung über eine Phrasensuche
+        # Notification about a phrase search
         $p   = "";
         $tmp = $this->q;
         while (preg_match("/(.*)\"(.+)\"(.*)/si", $tmp, $match)) {
@@ -822,7 +822,7 @@ class MetaGer
         }
         $p = rtrim($p, ", ");
         if (sizeof($this->phrases) > 0) {
-            $this->warnings[] = "Sie führen eine Phrasensuche durch: $p";
+            $this->warnings[] = trans('messages.phrase_search', ['phrases' => $p]);
         }
 
     }

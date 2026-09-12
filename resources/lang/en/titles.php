@@ -1,7 +1,7 @@
 <?php
 
 return [
-	'index' => 'MetaGer: Search and Find Savely, Protect Privacy',
+	'index' => 'MetaGer: Search and Find Safely, Protect Privacy',
 	'impressum'	=>	'Site Notice - MetaGer',
 	'about' => 'About Us - MetaGer',
 	'team' => 'Team - MetaGer',
@@ -13,5 +13,6 @@ return [
 	'settings' => 'Settings',
 	'websearch' => 'Websearch-Widget - MetaGer',
 	'sitesearch' => 'Sitesearch-Widget - MetaGer',
+	'beitritt'	=>	'SUMA-EV Membership Form',
 	'partnershops'	=>	'Partnershops - MetaGer',
 ];

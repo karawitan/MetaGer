@@ -14,9 +14,6 @@ GLS Gemeinschaftsbank, Bochum',
 please specify your full adress and (if available) 
 your E-Mail adress on the money transfer form.',
 
-	'logos.1' => 'Comfortably with Paypal<br>Via Paypal by credit card too (without PayPal registration),',
-	'logos.2' => 'or Bitcoins',
-
 	'lastschrift.1' => 'Donate by wire transfer',
 	'lastschrift.2' => 'Enter your account data along with the desired amount. We will debit your bank account accordingly.',
 	'lastschrift.3' => 'Please enter your name:',
@@ -46,5 +43,5 @@ You can do this by donating on our website. Or if you want to help open search e
 	'about.4.2' => 'to be able to be helped this way. The project unites around 400 online shops (from Amazon to Zooplus), that all declared to donate around 6% of every sale. Instead of directly browsing the online shop, use this link next time: ',
 	'about.4.3' => 'and click below the search term box on',
 	'about.4.4' => 'Make your purchase at MetaGer support shops - click here!',
-	'about.4.5' => 'This click brings you to the boost project shop selection. There you choose your shop and keep on shopping as usual. That is all. If enough people do this, we do not need ads anymore. Just two clicks for you - a chance for open knowledge access for the digital world.'
+	'about.4.5' => 'This click brings you to the boost project shop selection. There you choose your shop and keep on shopping as usual. That is all. If enough people do this, we do not need ads anymore. Just two clicks for you - a chance for open knowledge access for the digital world.',
 ];

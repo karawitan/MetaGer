@@ -7,14 +7,14 @@
 		<meta name="description" content="{!! trans('staticPages.meta.Description') !!}" />
 		<meta name="keywords" content="{!! trans('staticPages.meta.Keywords') !!}" />
 		<meta http-equiv=”language” content="{!! trans('staticPages.meta.language') !!}" />
-		<meta name="page-topic" content="Dienstleistung" />
+		<meta name="page-topic" content="{{ trans('staticPages.meta.page_topic') }}" />
 		<meta name="robots" content="index,follow" />
 		<meta name="revisit-after" content="7 days" />
 		<meta name="audience" content="all" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 		<meta rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<meta rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-		<link rel="search" type="application/opensearchdescription+xml" title="MetaGer: Sicher suchen &amp; finden, Privatsph&auml;re sch&uuml;tzen" href="{{  LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), action('StartpageController@loadPlugin', ['params' => base64_encode(serialize(Request::all()))])) }}">
+		<link rel="search" type="application/opensearchdescription+xml" title="{{ trans('staticPages.opensearch_title') }}" href="{{  LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), action('StartpageController@loadPlugin', ['params' => base64_encode(serialize(Request::all()))])) }}">
 		<link href="/css/bootstrap.css" rel="stylesheet" />
 		<link href="/css/style.css" rel="stylesheet" />
 		@if (isset($css))
@@ -66,7 +66,7 @@
 								<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('staticPages.nav15') }}
 								<span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="https://gitlab.metager3.de/open-source/MetaGer" target="_blank">MetaGer Quellcode</a></li>
+									<li><a href="https://gitlab.metager3.de/open-source/MetaGer" target="_blank">{{ trans('staticPages.source_code') }}</a></li>
 									<li><a href="{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), "/hilfe/") }}">{{ trans('staticPages.nav9') }}</a></li>
 									<li><a href="{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), "/widget/") }}">{{ trans('staticPages.nav10') }}</a></li>
 									<li><a href="https://metager.de/klassik/asso/" target="_blank">{{ trans('staticPages.nav11') }}</a></li>
@@ -94,7 +94,7 @@
 			@if( App::isLocale('de') )
 			<div class="mg-panel container" id="spendenaufruf" style="margin-bottom:-6%;max-height:126px;text-align:center;padding:0px;margin-top:0px">
 					<a href="{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), "/spendenaufruf") }}">
-					<img src="/img/aufruf.png" style="max-width:100%;max-height:126px;" alt="Spendenaufruf für die unabhängige, nicht-kommerzielle Internet-Suche" >
+					<img src="/img/aufruf.png" style="max-width:100%;max-height:126px;" alt="{{ trans('results.donation_banner_alt') }}" >
 					</a>
 			</div>
 			@endif
@@ -108,17 +108,6 @@
 				@yield('content')
 			</main>
 			@yield('optionalContent')
-			<footer>
-				<ul class="list-inline hidden-xs">
-					<li><a href="https://www.suma-ev.de/" target="_blank">
-						<img src="/img/suma_ev_logo-m1-greyscale.png" alt="SUMA-EV Logo"></a></li>
-					<li id="info">
-						<a href="{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), "kontakt") }}">{{ trans('staticPages.nav5') }}</a> - <a href="{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), "impressum") }}">{{ trans('staticPages.nav8') }}</a>
-						{{ trans('staticPages.sumaev.1') }}<a href="https://www.suma-ev.de/" target="_blank" >{{ trans('staticPages.sumaev.2') }}</a></li>
-					<li><a href="https://www.uni-hannover.de/" target="_blank">
-						<img src="/img/luh_metager.png" alt="LUH Logo"></a></li>
-				</ul>
-			</footer>
 			<img src="{{ action('ImageController@generateImage')}}?site={{ urlencode(url()->current()) }}" class="hidden" />
 			<script type="text/javascript" src="/js/jquery.js"></script>
 			<script type="text/javascript" src="/js/bootstrap.js"></script>

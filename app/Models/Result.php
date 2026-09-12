@@ -88,7 +88,7 @@ class Result
             }
         }
 
-        # Boost für Vorkommen der Suchwörter:
+        # Boost for occurrence of the search words:
         $maxRank        = 0.1;
         $tmpTitle       = $this->titel;
         $tmpDescription = $this->descr;
@@ -136,18 +136,18 @@ class Result
 
     public function isValid(\App\MetaGer $metager)
     {
-        # Zunächst die persönlich ( über URL-Parameter ) definierten Blacklists:
+        # First the personal (via URL parameter) defined blacklists:
         if (in_array($this->strippedHost, $metager->getUserHostBlacklist())
             || in_array($this->strippedDomain, $metager->getUserDomainBlacklist())) {
             return false;
         }
 
-        # Jetzt unsere URL und Domain Blacklist
+        # Now our URL and domain blacklist
         if ($this->strippedHost !== "" && (in_array($this->strippedHost, $metager->getDomainBlacklist()) || in_array($this->strippedLink, $metager->getUrlBlacklist()))) {
             return false;
         }
 
-        # Nun der Eventuelle Sprachfilter
+        # Now the optional language filter
         if ($metager->getLang() !== "all") {
             $text = $this->titel . " " . $this->descr;
             $path = app_path() . "/Models/lang.pl";
@@ -159,7 +159,7 @@ class Result
 
         }
 
-        # Wir wenden die Stoppwortsuche an und schmeißen entsprechende Ergebnisse raus:
+        # We apply the stop word search and throw out corresponding results:
         foreach ($metager->getStopWords() as $stopWord) {
             $text = $this->titel . " " . $this->descr;
             if (stripos($text, $stopWord) !== false) {
@@ -167,7 +167,7 @@ class Result
             }
         }
 
-        # Die Strinsuche:
+        # The phrase search:
         $text = strtolower($this->titel) . " " . strtolower($this->descr);
         foreach ($metager->getPhrases() as $phrase) {
             if (strpos($text, $phrase) === false) {
@@ -176,9 +176,9 @@ class Result
 
         }
 
-        # Abschließend noch 2 Überprüfungen. Einmal den Host filter, der Sicherstellt, dass von jedem Host maximal 3 Links angezeigt werden
-        # und dann noch den Dublettefilter, der sicher stellt, dass wir nach Möglichkeit keinen Link doppelt in der Ergebnisliste haben
-        # Diese Überprüfung führen wir unter bestimmten Bedingungen nicht durch:
+        # Finally 2 more checks. First the host filter, which ensures that at most 3 links are shown per host
+        # and then the duplicate filter, which ensures that we do not have a link twice in the result list if possible
+        # We do not perform this check under certain conditions:
         if ($metager->getSite() === "" &&
             strpos($this->strippedHost, "ncbi.nlm.nih.gov") === false &&
             strpos($this->strippedHost, "twitter.com") === false &&
@@ -191,7 +191,7 @@ class Result
             }
         }
 
-        # Unabhängig davon unser Dublettenfilter:
+        # Independently of that our duplicate filter:
         if ($metager->addLink($this->strippedLink)) {
             $metager->addHostCount($this->strippedHost);
             return true;

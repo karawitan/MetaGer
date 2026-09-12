@@ -26,4 +26,6 @@ Dafür wird Javascript benötigt.',
 	'letter.2' => 'Wir ziehen es vor, auf digitalem Wege kontaktiert zu werden.
 Wenn Sie jedoch eine postalische Kontaktaufnahme als unbedingt nötig erachten,
 erreichen Sie uns unter der folgenden Addresse:',
+	'form.email_placeholder' => 'Ihre e-mail-Adresse (optional)',
+	'form.message_placeholder' => 'Ihre Nachricht',
 ];

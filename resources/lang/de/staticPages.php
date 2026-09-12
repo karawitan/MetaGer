@@ -28,5 +28,9 @@ return [
 	'sumaev.2'			=>	'SUMA-EV - Verein für freien Wissenszugang.',
 	'meta.Description'	=>	'Sicher suchen und finden unter Wahrung der Privatsphäre. Das digitale Wissen der Welt muss ohne Bevormundung durch Staaten oder Konzerne frei zugänglich sein und bleiben.',
 	'meta.Keywords'		=>	'Internetsuche, privatsphäre, privacy, Suchmaschine, Datenschutz, Anonproxy, anonym suchen, Bildersuche, Suchmaschine, anonym, MetaGer, metager, metager.de',
-	'meta.language'		=>	'de'
+	'meta.language'		=>	'de',
+	'opensearch_title'	=>	'MetaGer: Sicher suchen & finden, Privatsphäre schützen',
+	'startpage'			=>	'MetaGer-Startseite',
+	'source_code'		=>	'MetaGer Quellcode',
+	'meta.page_topic'	=>	'Dienstleistung',
 ];

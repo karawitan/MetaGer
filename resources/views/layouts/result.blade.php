@@ -17,7 +17,7 @@
 						</a>
 					</div>
 					<div class="options">
-						<a tabindex="0" data-toggle="popover" data-trigger="focus" data-placement="auto bottom" data-container="body" data-html="true" data-title="<span class='glyphicon glyphicon-cog'></span> Optionen">
+						<a tabindex="0" data-toggle="popover" data-trigger="focus" data-placement="auto bottom" data-container="body" data-html="true" data-title="<span class='glyphicon glyphicon-cog'></span> {{ trans('results.options') }}">
 							@if(strlen($metager->getSite()) === 0)
 							<span class="glyphicon glyphicon-triangle-bottom"></span>
 							@endif
@@ -26,18 +26,18 @@
 							<ul class="options-list list-unstyled">
 								<li>
 									<a href="{{ $metager->generateSiteSearchLink($result->strippedHost) }}">
-										Suche auf dieser Domain neu starten
+										{{ trans('results.site_search_restart') }}
 									</a>
 								</li>
 								<li>
 									<a href="{{ $metager->generateRemovedHostLink($result->strippedHost) }}">
-										{{ $result->strippedHost }} ausblenden
+										{{ trans('results.hide_host', ['host' => $result->strippedHost]) }}
 									</a>
 								</li>
 								@if( $result->strippedHost !== $result->strippedDomain )
 								<li>
 								<a href="{{ $metager->generateRemovedDomainLink($result->strippedDomain) }}">
-								*.{{ $result->strippedDomain }} ausblenden
+								{{ trans('results.hide_domain', ['domain' => $result->strippedDomain]) }}
 								</a>
 								</li>
 								@endif
@@ -46,17 +46,17 @@
 					</div>
 				</div>
 				<span class="hoster">
-				von {!! $result->gefVon !!}
+				{{ trans('results.from') }} {!! $result->gefVon !!}
 				</span>
 				@if( isset($result->partnershop) && $result->partnershop === TRUE )
 				<span class="partnershop-info">
 				<img src="/img/boosticon.png" height="13" alt="">
-				<a href="{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), "/partnershops") }}" target="_blank">Partnershop</a>
+				<a href="{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), "/partnershops") }}" target="_blank">{{ trans('results.partnershop') }}</a>
 				</span>
 				@endif
-				<a class="proxy" onmouseover="$(this).popover('show');" onmouseout="$(this).popover('hide');" data-toggle="popover" data-placement="auto right" data-container="body" data-content="Der Link wird anonymisiert geöffnet. Ihre Daten werden nicht zum Zielserver übetragen. Möglicherweise funktionieren manche Webseiten nicht wie gewohnt." href="{{ $result->proxyLink }}" target="{{ $metager->getTab() }}">
+				<a class="proxy" onmouseover="$(this).popover('show');" onmouseout="$(this).popover('hide');" data-toggle="popover" data-placement="auto right" data-container="body" data-content="{{ trans('results.proxy_tooltip') }}" href="{{ $result->proxyLink }}" target="{{ $metager->getTab() }}">
 					<img src="/img/proxyicon.png" alt="" />
-					anonym öffnen
+					{{ trans('results.proxy_open') }}
 				</a>
 			</div>
 			</div>
