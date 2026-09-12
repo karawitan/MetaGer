@@ -60,7 +60,7 @@ class Search extends Job implements ShouldQueue
     private function readAnswer ()
     {
         $time = microtime(true);
-        $headers = '';
+        $headers = [];
         $body = '';
         $length = 0;
 
