@@ -678,7 +678,7 @@ class MetaGer
         # Category
         $this->category = $request->input('category', '');
         # Request Times:
-        $this->time = $request->input('time', 1000);
+        $this->time = $request->input('time', 5000);
 
         # Page
         $this->page = $request->input('page', 1);
@@ -707,7 +707,7 @@ class MetaGer
             $this->warnings[] = trans('messages.dart_europe');
         }
         if ($this->time <= 500 || $this->time > 20000) {
-            $this->time = 1000;
+            $this->time = 5000;
         }
         if ($request->has('minism') && ($request->has('fportal') || $request->has('harvest'))) {
             $input    = $request->all();
